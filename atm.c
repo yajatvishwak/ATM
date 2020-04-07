@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned long amount = 1000, deposit, withdraw;
+unsigned long amount, deposit, withdraw;
 int choice, pin, k;
 long card;
 char name[50];
@@ -102,17 +102,17 @@ void main()
         {
         case 1:
             printf("USER NAME: %s\n", name);
-            printf("\n YOUR BALANCE IS Rs : %ld\n ", amount);
-            printf("\n YOUR ACCOUNT NUMBER IS : %ld ", card);
+            printf("\n YOUR BALANCE IS Rs : %lu\n ", amount);
+            printf("\n YOUR ACCOUNT NUMBER IS : %lu ", card);
             break;
         case 2:
             printf("\n ENTER THE AMOUNT TO WITHDRAW: ");
-            scanf("%ld", &withdraw);
+            scanf("%lu", &withdraw);
             if (withdraw % 100 != 0)
             {
                 printf("\n PLEASE ENTER THE AMOUNT IN MULTIPLES OF 100");
             }
-            else if (withdraw > (amount - 500))
+            else if (withdraw > amount)
             {
                 printf("\n INSUFFICENT BALANCE");
             }
@@ -125,7 +125,7 @@ void main()
             break;
         case 3:
             printf("\n ENTER THE AMOUNT TO DEPOSIT: ");
-            scanf("%ld", &deposit);
+            scanf("%lu", &deposit);
             amount = amount + deposit;
             printf("YOUR BALANCE IS %lu", amount);
             break;
@@ -149,11 +149,11 @@ void main()
     {
         if (CARD[i] == card && PIN[i] == pin)
         {
-            fprintf(fptr, "%d,%ld,%s,%ld\n", PIN[i], amount, name, card);
+            fprintf(fptr, "%d,%lu,%s,%lu\n", PIN[i], amount, name, card);
         }
         else
         {
-            fprintf(fptr, "%d,%ld,%s,%ld\n", PIN[i], DEP[i], NAMES[i], CARD[i]);
+            fprintf(fptr, "%d,%lu,%s,%lu\n", PIN[i], DEP[i], NAMES[i], CARD[i]);
         }
     }
 
